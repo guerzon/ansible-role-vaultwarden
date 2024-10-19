@@ -9,12 +9,26 @@ Install and manage your Vaultwarden instances using Ansible.
 Requirements
 ------------
 
-TODO
+None
 
 Role Variables
 --------------
 
-TODO
+Specify the web vault and API server versions:
+
+```yaml
+web_vault_version: "2024.6.2c-1.7"
+api_server_version: "1.32.2-2.2"
+```
+
+The data directories can also be specified as follows:
+
+```yaml
+data_folder: "/var/lib/vaultwarden"
+web_vault_folder: "/usr/share/vaultwarden/web-vault"
+```
+
+More configuration options to be added.
 
 Dependencies
 ------------
@@ -26,14 +40,16 @@ Example Playbook
 
 Minimal installation example using a SQLite database:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: all
+  roles:
+    - vaultwarden
+```
 
 License
 -------
 
-MIT
+[MIT](./LICENSE)
 
 Author Information
 ------------------
