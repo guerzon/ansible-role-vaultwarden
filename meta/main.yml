@@ -4,8 +4,8 @@ galaxy_info:
   author: Lester Guerzon
   description: Vaultwarden using Ansible
   issue_tracker_url: https://github.com/guerzon/ansible-role-vaultwarden/issues
-  license: "license (BSD, MIT)"
-  min_ansible_version: 2.10
+  license: "MIT"
+  min_ansible_version: "2.10"
   platforms:
     - name: Fedora
       versions:
