@@ -1,0 +1,18 @@
+[Unit]
+Description=Vaultwarden - A Bitwarden API server
+After=network.target
+
+[Service]
+Type=simple
+User=vaultwarden
+ExecStart=/usr/bin/vaultwarden
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+WorkingDirectory=/etc/vaultwarden
+ReadWriteDirectories=/var/lib/vaultwarden
+EnvironmentFile=/etc/vaultwarden/vaultwarden.cfg
+
+[Install]
+WantedBy=multi-user.target

@@ -14,4 +14,5 @@ galaxy_info:
     - vaultwarden
     - passwordmanager
     - passwordmanagers
+    - security
 dependencies: []

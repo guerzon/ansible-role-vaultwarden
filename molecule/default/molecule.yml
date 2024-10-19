@@ -1,9 +1,21 @@
 ---
 role_name_check: 1
+dependency:
+  name: galaxy
+  options:
+    ignore-errors: true
 driver:
-  name: default
+  name: docker
 platforms:
   - name: instance
-  # you might want to add your own variables here based on what provisioning
-  # you are doing like:
-  # image: quay.io/centos/centos:stream8
+    image: "geerlingguy/docker-rockylinux9-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: true
+    pre_build_image: true
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ${MOLECULE_PLAYBOOK:-converge.yml}

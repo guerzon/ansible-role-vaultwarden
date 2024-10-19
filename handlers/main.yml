@@ -1,2 +1,10 @@
 ---
 # handlers file for vaultwarden
+
+- name: Restart Vaultwarden service
+  become: true
+  ansible.builtin.systemd_service:
+    name: vaultwarden
+    enabled: true
+    state: restarted
+    daemon_reload: true
