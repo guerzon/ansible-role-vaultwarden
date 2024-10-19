@@ -1,31 +1,31 @@
 ---
 # tasks file for vaultwarden
 
-## The mirrors are very very slow. Put the RPMs inside files/ for now.
-
-# - name: Download the web vault RPM
-#   ansible.builtin.get_url:
-#     url: "{{ rpm_source }}/vaultwarden-webvault-{{ web_vault_version }}.noarch.rpm"
-#     dest: /tmp
-#     mode: 0644
-
-# - name: Download the API server RPM
-#   ansible.builtin.get_url:
-#     url: "{{ rpm_source }}/vaultwarden-{{ api_server_version }}.x86_64.rpm"
-#     dest: /tmp
-#     mode: 0644
-
-- name: Copy the web vault RPM
-  ansible.builtin.copy:
-    src: "vaultwarden-webvault-{{ web_vault_version }}.noarch.rpm"
+- name: Download the web vault RPM
+  ansible.builtin.get_url:
+    url: "{{ rpm_source }}/vaultwarden-webvault-{{ web_vault_version }}.noarch.rpm"
     dest: /tmp
     mode: 0644
 
-- name: Copy the API server RPM
-  ansible.builtin.copy:
-    src: "vaultwarden-{{ api_server_version }}.x86_64.rpm"
+- name: Download the API server RPM
+  ansible.builtin.get_url:
+    url: "{{ rpm_source }}/vaultwarden-{{ api_server_version }}.x86_64.rpm"
     dest: /tmp
     mode: 0644
+
+## The mirror is very very slow. Put the RPMs inside files/ for now.
+
+# - name: Copy the web vault RPM
+#   ansible.builtin.copy:
+#     src: "vaultwarden-webvault-{{ web_vault_version }}.noarch.rpm"
+#     dest: /tmp
+#     mode: 0644
+
+# - name: Copy the API server RPM
+#   ansible.builtin.copy:
+#     src: "vaultwarden-{{ api_server_version }}.x86_64.rpm"
+#     dest: /tmp
+#     mode: 0644
 
 - name: Install the web vault RPM
   become: true
