@@ -13,20 +13,6 @@
     dest: /tmp
     mode: 0644
 
-## The mirror is very very slow. Put the RPMs inside files/ for now.
-
-# - name: Copy the web vault RPM
-#   ansible.builtin.copy:
-#     src: "vaultwarden-webvault-{{ web_vault_version }}.noarch.rpm"
-#     dest: /tmp
-#     mode: 0644
-
-# - name: Copy the API server RPM
-#   ansible.builtin.copy:
-#     src: "vaultwarden-{{ api_server_version }}.x86_64.rpm"
-#     dest: /tmp
-#     mode: 0644
-
 - name: Install the web vault RPM
   become: true
   ansible.builtin.package:
