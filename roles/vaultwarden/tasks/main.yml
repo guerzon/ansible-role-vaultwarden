@@ -1,0 +1,5 @@
+---
+# tasks file for vaultwarden
+
+- name: Print hostname
+  ansible.builtin.command: hostname

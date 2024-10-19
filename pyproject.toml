@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "vaultwarden-ansible"
+version = "0.1.0"
+description = "Ansible role for Vaultwarden"
+authors = ["Lester Guerzon <guerzon@proton.me>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ansible = "^10.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
