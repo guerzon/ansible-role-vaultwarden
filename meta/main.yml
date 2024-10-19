@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  role_name: vaultwarden
+  author: Lester Guerzon
+  description: Vaultwarden using Ansible
+  issue_tracker_url: https://github.com/guerzon/ansible-role-vaultwarden/issues
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.10
+  platforms:
+  - name: Fedora
+    versions:
+    - all
+  galaxy_tags:
+    - vaultwarden
+    - passwordmanager
+    - passwordmanagers
+dependencies: []

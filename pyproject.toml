@@ -9,6 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 ansible = "^10.5.0"
+molecule = "^24.9.0"
 
 
 [build-system]
