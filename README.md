@@ -100,6 +100,15 @@ Specify the domain name and custom Rocket port:
     - vaultwarden
 ```
 
+Supported Platforms
+-------
+
+Currently, the following are supported. Additional distros will be supported in the future.
+
+- Red Hat Enterprise Linux 9
+- Rocky Linux 9
+- Fedora 40
+
 License
 -------
 
