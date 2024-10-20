@@ -1,11 +1,80 @@
 ---
 # defaults file for vaultwarden
 
+## Installation
 web_vault_version: "2024.6.2c-1.7"
 api_server_version: "1.32.2-2.2"
-
 rpm_source: "https://rpm.awx.wiki/vaultwarden/RPMS"
+appuser: "vaultwarden"
 
-## Core configuration options
+## Data folders
 data_folder: "/var/lib/vaultwarden"
 web_vault_folder: "/usr/share/vaultwarden/web-vault"
+web_vault_enabled: "true"
+
+## Database settings
+database_url: "{{ data_folder }}/db.sqlite3"
+enable_wal: "true"
+db_connection_retries: 15
+database_timeout: 30
+database_max_conns: 10
+database_conn_init: ""
+
+## Websocket
+enable_websocket: "true"
+
+## Push notification
+push_enabled: "false"
+push_installation_id: "CHANGEME"
+push_installation_key: "CHANGEME"
+push_relay_uri: "https://push.bitwarden.com"
+push_identity_uri: "https://identity.bitwarden.com"
+
+## General settings
+domain: ""
+sends_allowed: "true"
+hibp_api_key: ""
+signups_allowed: "true"
+signups_verify: "false"
+signups_verify_resend_time: 3600
+signups_verify_resend_limit: 60
+signups_domains_whitelist: ""
+invitations_allowed: "true"
+invitation_org_name: "Vaultwarden"
+
+## Advanced settings
+ip_header: "X-Real-IP"
+use_syslog: "false"
+log_file: "/var/log/vaultwarden/vaultwarden.log"
+log_level: "info"
+admin_token: "CHANGEME"
+disable_admin_token: "false"
+
+## MFA/2FA settings
+yubico_client_id: ""
+yubico_secret_key: ""
+yubico_server: ""
+duo_ikey: ""
+duo_skey: ""
+duo_host: ""
+
+## SMTP settings
+smtp_host: ""
+smtp_from: ""
+smtp_from_name: ""
+smtp_username: ""
+smtp_password: ""
+smtp_timeout: 15
+smtp_security: "starttls"
+smtp_port: 587
+use_sendmail: "false"
+smtp_auth_mechanism: ""
+smtp_debug: "false"
+smtp_accept_invalid_certs: "false"
+smtp_accept_invalid_hostname: "false"
+
+## Rocket settings
+rocket_address: "127.0.0.1"
+rocket_port: "8000"
+rocket_tls_pem: ""
+rocket_tls_key: ""

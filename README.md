@@ -14,21 +14,64 @@ None
 Role Variables
 --------------
 
-Specify the web vault and API server versions:
+Refer to the defaults file (`defaults/main.yml`) for the complete details. The following is an example configuration.
+
+Specify the web vault and API server versions, and run Vaultwarden as a specific user:
 
 ```yaml
 web_vault_version: "2024.6.2c-1.7"
 api_server_version: "1.32.2-2.2"
+appuser: "vault"
 ```
 
-The data directories can also be specified as follows:
+Specify the database settings:
 
 ```yaml
-data_folder: "/var/lib/vaultwarden"
-web_vault_folder: "/usr/share/vaultwarden/web-vault"
+database_url: "postgresql://appuser:SecurePassword@192.168.100.100/vaultwardenprod"
 ```
 
-More configuration options to be added.
+Configure push notifications:
+
+```yaml
+push_enabled: "true"
+push_installation_id: "CHANGEME"
+push_installation_key: "CHANGEME"
+```
+
+General settings:
+
+```yaml
+domain: "https://pass.homelabnet.lcl"
+signups_allowed: "true"
+signups_verify: "true"
+signups_domains_whitelist: "homelabnet.lcl"
+invitations_allowed: "true"
+invitation_org_name: "HomeLab Corp"
+```
+
+Advanced settings:
+
+```yaml
+admin_token: "CHANGEME"
+disable_admin_token: "false"
+```
+
+Ensure emails are sent:
+
+```yaml
+smtp_host: "smtp.gmail.com"
+smtp_from: "vaultadmin@homelabnet.lcl"
+smtp_from_name: "Vault Administrator"
+smtp_username: "tadmin@homelabnet.lcl"
+smtp_password: "SecurePassword"
+smtp_security: "starttls"
+```
+
+Set custom listening port:
+
+```yaml
+rocket_port: "5000"
+```
 
 Dependencies
 ------------
@@ -42,6 +85,17 @@ Minimal installation example using a SQLite database:
 
 ```yaml
 - hosts: all
+  roles:
+    - vaultwarden
+```
+
+Specify the domain name and custom Rocket port:
+
+```yaml
+- hosts: all
+  vars:
+    domain: "https://vaultwarden.homelabnet.lcl"
+    rocket_port: "8000"
   roles:
     - vaultwarden
 ```
