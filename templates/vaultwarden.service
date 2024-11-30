@@ -11,7 +11,7 @@ PrivateDevices=true
 ProtectHome=true
 ProtectSystem=full
 WorkingDirectory=/etc/vaultwarden
-ReadWriteDirectories=/var/lib/vaultwarden
+ReadWriteDirectories={{ data_folder }}
 EnvironmentFile=/etc/vaultwarden/vaultwarden.cfg
 
 [Install]

@@ -21,7 +21,6 @@ Specify the web vault and API server versions, and run Vaultwarden as a specific
 ```yaml
 web_vault_version: "2024.6.2c-1.7"
 api_server_version: "1.32.2-2.2"
-appuser: "vault"
 ```
 
 Specify the database settings:

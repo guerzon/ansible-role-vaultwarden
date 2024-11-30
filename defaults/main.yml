@@ -5,7 +5,6 @@
 web_vault_version: "2024.6.2c-1.7"
 api_server_version: "1.32.2-2.2"
 rpm_source: "https://rpm.awx.wiki/vaultwarden/RPMS"
-appuser: "vaultwarden"
 
 ## Data folders
 data_folder: "/var/lib/vaultwarden"
