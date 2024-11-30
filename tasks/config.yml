@@ -1,0 +1,30 @@
+---
+- name: Configure data directory
+  become: true
+  ansible.builtin.file:
+    path: "{{ data_folder }}"
+    state: directory
+    owner: vaultwarden
+    group: vaultwarden
+    mode: 0750
+  notify: Restart Vaultwarden service
+
+- name: Vaultwarden configuration
+  become: true
+  ansible.builtin.template:
+    src: vaultwarden.cfg
+    dest: /etc/vaultwarden/vaultwarden.cfg
+    owner: vaultwarden
+    group: vaultwarden
+    mode: 0640
+  notify: Restart Vaultwarden service
+
+- name: Setup systemd service
+  become: true
+  ansible.builtin.template:
+    src: vaultwarden.service
+    dest: /etc/systemd/system/vaultwarden.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart Vaultwarden service

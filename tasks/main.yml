@@ -1,53 +1,29 @@
 ---
 # tasks file for vaultwarden
 
-# - name: Download the API server RPM
-#   ansible.builtin.get_url:
-#     url: "{{ rpm_source }}/vaultwarden-{{ api_server_version }}.x86_64.rpm"
-#     dest: /tmp
-#     mode: 0644
-
-# - name: Download the web vault RPM
-#   ansible.builtin.get_url:
-#     url: "{{ rpm_source }}/vaultwarden-webvault-{{ web_vault_version }}.noarch.rpm"
-#     dest: /tmp
-#     mode: 0644
-
-- name: Install the API server RPM
-  become: true
-  ansible.builtin.package:
-    name: "/tmp/vaultwarden-{{ api_server_version }}.x86_64.rpm"
-    disable_gpg_check: true
-    state: present
-  notify: Restart Vaultwarden service
-
-- name: Install the web vault RPM
-  become: true
-  ansible.builtin.package:
-    name: "/tmp/vaultwarden-webvault-{{ web_vault_version }}.noarch.rpm"
-    disable_gpg_check: true
-    state: present
-  notify: Restart Vaultwarden service
-
-- name: Configure Vaultwarden
-  become: true
-  ansible.builtin.template:
-    src: vaultwarden.cfg
-    dest: /etc/vaultwarden/vaultwarden.cfg
-    owner: vaultwarden
-    group: vaultwarden
-    mode: 0640
-  notify: Restart Vaultwarden service
-
-- name: Setup systemd service
-  become: true
-  ansible.builtin.template:
-    src: vaultwarden.service
-    dest: /etc/systemd/system/vaultwarden.service
-    owner: root
-    group: root
+- name: Download the API server RPM
+  ansible.builtin.get_url:
+    url: "{{ rpm_source }}/vaultwarden-{{ api_server_version }}.x86_64.rpm"
+    dest: /tmp
     mode: 0644
+
+- name: Download the web vault RPM
+  ansible.builtin.get_url:
+    url: "{{ rpm_source }}/vaultwarden-webvault-{{ web_vault_version }}.noarch.rpm"
+    dest: /tmp
+    mode: 0644
+
+- name: Install the API server and web vault
+  become: true
+  ansible.builtin.package:
+    name:
+      - "/tmp/vaultwarden-{{ api_server_version }}.x86_64.rpm"
+      - "/tmp/vaultwarden-webvault-{{ web_vault_version }}.noarch.rpm"
+    disable_gpg_check: true
+    state: present
   notify: Restart Vaultwarden service
+
+- include_tasks: config.yml
 
 - name: Uninstall Vaultwarden
   become: true
